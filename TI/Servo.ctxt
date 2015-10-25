@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=pin
+comment0.target=Servo(int)
+comment0.text=\r\n\ Creates\ a\ servo\ on\ a\ specific\ pin,\ and\ starts\ it\ right\ away\r\n\ @param\ pin\ The\ BoeBot\ Pin\ number\r\n
+comment1.params=
+comment1.target=void\ stop()
+comment1.text=\r\n\ Stops\ the\ servo\r\n
+comment2.params=
+comment2.target=void\ start()
+comment2.text=\r\n\ Starts\ (or\ resumes)\ the\ servo\r\n
+comment3.params=pulseWidth
+comment3.target=void\ update(int)
+comment3.text=\r\n\ Changes\ the\ servo's\ speed\r\n\ @param\ pulseWidth\ the\ width\ of\ the\ pulse,\ in\ milliseconds\r\n
+numComments=4

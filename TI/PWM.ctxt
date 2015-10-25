@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=pin\ dutycycle
+comment0.target=PWM(int,\ int)
+comment0.text=\r\n\ Creates\ and\ starts\ the\ PWM\r\n\ @param\ pin\ the\ BoeBot\ pin\ number\r\n\ @param\ dutycycle\ the\ dutycycle,\ range\ of\ 0\ to\ 255\r\n
+comment1.params=
+comment1.target=void\ start()
+comment1.text=\r\n\ Starts\ or\ resumes\ the\ PWM\r\n
+comment2.params=
+comment2.target=void\ stop()
+comment2.text=\r\n\ Stops\ the\ PWM\r\n
+comment3.params=dutycycle
+comment3.target=void\ update(int)
+comment3.text=\r\n\ updates\ and\ starts\ the\ PWM\r\n\ @param\ dutycycle\ the\ dutycycle,\ range\ of\ 0\ to\ 255\r\n
+numComments=4

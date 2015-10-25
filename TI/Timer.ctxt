@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=interval
+comment0.target=Timer(int)
+comment0.text=\r\n\ Creates\ the\ timer,\ and\ sets\ it\ to\ fire\ after\ the\ specified\ interval\r\n\ @param\ interval\ The\ interval,\ in\ milliseconds\r\n
+comment1.params=
+comment1.target=boolean\ timeout()
+comment1.text=\r\n\ Used\ to\ indicate\ if\ this\ timer\ has\ passed\ the\ interval.\ If\ the\ interval\ has\ been\ passed\ twice,\ calling\ this\ method\ twice\ will\ return\ true\ multiple\ times\r\n
+comment2.params=
+comment2.target=void\ mark()
+comment2.text=\r\n\ Reset\ the\ timer\r\n
+comment3.params=interval
+comment3.target=void\ setInterval(int)
+comment3.text=\r\n\ Sets\ the\ interval\ to\ another\ time,\ and\ reset\ the\ timer\r\n
+numComments=4

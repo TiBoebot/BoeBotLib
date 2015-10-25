@@ -1,0 +1,41 @@
+echo "Updating pi"
+apt-get -y -qq update
+apt-get -y upgrade
+echo "Installing java, subversion and git"
+apt-get -qq -y install oracle-java8-jdk subversion git-core
+echo "Installing wiringpi"
+rm -rf /home/pi/wiringPi
+git clone https://github.com/joan2937/pigpio /home/pi/pigpio
+cd /home/pi/pigpio
+make
+make install
+
+git clone git://git.drogon.net/wiringPi /home/pi/wiringPi
+cd /home/pi/wiringPi
+sed -i 's/mark \* 100/mark \* 10/g' wiringPi/softPwm.c
+sed -i 's/space \* 100/space \* 10/g' wiringPi/softPwm.c
+cat <<EOF >> wiringPi/softPwm.c
+void softPwmWrite2 (int pin, int highTime, int lowTime)
+{
+  pin &= (MAX_PINS - 1) ;
+
+  if (highTime < 0)
+    highTime = 0 ;
+  if(lowTime < 0)
+    lowTime = 0;
+
+  marks [pin] = highTime;
+  range [pin] = highTime + lowTime;
+}
+EOF
+
+./build
+echo "Downloading boebotlib"
+svn co "http://svn.borf.info/avans/Kwartalen/Voltijd%20TI/TI-1.2%20Voltijd/BoeBotExtension/BoeBotLib"  /home/pi/BoeBotLib
+echo "Building"
+cd /home/pi/BoeBotLib
+./buildheader
+./build
+mkdir /home/pi/upload
+chmod 777 /home/pi/upload
+echo "Done"

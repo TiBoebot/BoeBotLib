@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=pin\ value
+comment0.target=void\ digitalWrite(int,\ boolean)
+comment0.text=\r\n\ Will\ put\ a\ pin\ in\ output\ mode,\ and\ set\ the\ state\ high\ if\ value\ is\ true,\ and\ low\ if\ value\ is\ false\r\n\ If\ this\ pin\ is\ in\ input\ mode,\ will\ switch\ to\ output\ mode\r\n\ @param\ pin\ the\ BoeBot\ pin\ number\r\n\ @param\ value\ the\ value\ to\ write\ to\ this\ pin.\ true\ will\ set\ the\ pin\ high,\ low\ will\ set\ the\ pin\ low\r\n
+comment1.params=pin
+comment1.target=boolean\ digitalRead(int)
+comment1.text=\r\n\ Read\ the\ state\ of\ a\ pin.\ If\ the\ pin\ is\ high,\ will\ return\ true,\ otherwise\ will\ return\ false\r\n\ @param\ pin\ the\ BoeBot\ pin\ number\r\n
+comment2.params=delay
+comment2.target=void\ wait(int)
+comment2.text=\r\n\ Waits\ for\ a\ specific\ time\r\n\ Warning\:\ this\ delay\ is\ not\ very\ accurate\r\n\ @param\ delay\ the\ time\ in\ milliseconds\r\n
+comment3.params=seconds\ micros
+comment3.target=void\ wait(int,\ int)
+comment3.text=\r\n\ Waits\ for\ a\ specific\ time\r\n\ @param\ seconds\ the\ number\ of\ seconds\r\n\ Warning\:\ if\ the\ delay\ is\ too\ short,\ will\ use\ busy\ waiting\r\n\ @param\ micros\ the\ number\ of\ microseconds\r\n
+comment4.params=micros
+comment4.target=void\ uwait(int)
+comment4.text=\r\n\ Waits\ for\ a\ specific\ time\r\n\ Warning\:\ if\ the\ delay\ is\ too\ short,\ will\ use\ busy\ waiting\r\n\ @param\ micros\ the\ number\ of\ microseconds\r\n
+comment5.params=pin\ value\ timeout
+comment5.target=int\ pulseIn(int,\ boolean,\ int)
+comment5.text=\r\n\ Waits\ for\ a\ pulse\ on\ a\ pin\r\n\ timeout\ milliseconds\r\n\ \r\n
+comment6.params=slot\ value
+comment6.target=void\ dataStore(int,\ int)
+comment6.text=\r\n\ Stores\ data\ on\ the\ internal\ memory\ of\ the\ Raspberry\ Pi\r\n\ @param\ slot\ the\ dataslot\ to\ store\ information\ on\r\n\ @value\ the\ value\ to\ store\r\n
+comment7.params=slot
+comment7.target=int\ dataRead(int)
+comment7.text=\r\n\ Reads\ data\ from\ the\ internal\ memory\ of\ the\ Raspberry\ Pi\r\n\ @param\ slot\ the\ dataslot\ to\ store\ information\ on\r\n\ @return\ the\ information\ in\ memory\r\n
+numComments=8

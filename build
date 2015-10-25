@@ -1,0 +1,4 @@
+javac TI/*.java
+javah TI.PiGpio
+gcc -I/usr/lib/jvm/jdk-8-oracle-arm-vfp-hflt/include -I/usr/lib/jvm/jdk-8-oracle-arm-vfp-hflt/include/linux -shared -o libpiGpio.so TI_PiGpio.c -lpigpio -lpthread -lrt
+jar -cf BoeBotLib.jar TI/*.class
