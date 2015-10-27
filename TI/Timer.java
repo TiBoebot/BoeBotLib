@@ -20,6 +20,7 @@ public class Timer
     
     /**
      * Used to indicate if this timer has passed the interval. If the interval has been passed twice, calling this method twice will return true multiple times
+     * @return whether or not the timeout has passed
      */
     public boolean timeout()
     {
@@ -42,6 +43,7 @@ public class Timer
     
     /**
      * Sets the interval to another time, and reset the timer
+     * @param interval the new interval, in milliseconds
      */
     public void setInterval(int interval)
     {

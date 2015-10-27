@@ -25,6 +25,7 @@ public class BoeBot
     /**
      * Read the state of a pin. If the pin is high, will return true, otherwise will return false
      * @param pin the BoeBot pin number
+     * @return the state of the pin, true for high, false for low
      */
     public static boolean digitalRead(int pin)
     {
@@ -69,8 +70,10 @@ public class BoeBot
     
    /**
     * Waits for a pulse on a pin
-    * timeout milliseconds
-	* 
+	* @param pin the BoeBot pin number
+	* @param value the state to wait for. true to wait for a high pulse, false to wait for a low pulse
+	* @param timeout the timeout to wait for, in milliseconds
+	* @return Returns the length of the measured pulse, -1 if there was a timeout, and 0 if there was a timeout during the pulse
     */
     public static int pulseIn(int pin, boolean value, int timeout)
     {
@@ -81,7 +84,7 @@ public class BoeBot
     /**
      * Stores data on the internal memory of the Raspberry Pi
      * @param slot the dataslot to store information on
-     * @value the value to store
+     * @param value the value to store
      */
     public static void dataStore(int slot, int value)
     {
