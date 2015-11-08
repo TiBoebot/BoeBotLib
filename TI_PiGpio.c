@@ -15,6 +15,7 @@ sem_t sem;
  */
 JNIEXPORT void JNICALL Java_TI_PiGpio_initialize  (JNIEnv* env, jclass cl)
 {
+	gpioCfgClock(1, 1, 0);
 	gpioInitialise();
 	sem_init(&sem, 0, 0);
 }
@@ -195,10 +196,10 @@ void pulseInAlertFunc(int pin, int level, uint32_t tick)
  * Method:    pulseIn
  * Signature: (IZI)I
  */
-JNIEXPORT jint JNICALL Java_TI_PiGpio_pulseIn  (JNIEnv * env, jclass cl, jint pin, jboolean waitFor, jint timeout)
+JNIEXPORT jint JNICALL Java_TI_PiGpio_pulseIn2  (JNIEnv * env, jclass cl, jint pin, jboolean waitFor, jint timeout)
 {
-//	if(gpioRead(pin) == waitFor)
-//		return -2;
+	if(gpioRead(pin) == waitFor)
+		return -2;
 	struct timespec ts;
 	pi_waitFor = waitFor;
 	pi_startTick = gpioTick();
@@ -223,6 +224,28 @@ JNIEXPORT jint JNICALL Java_TI_PiGpio_pulseIn  (JNIEnv * env, jclass cl, jint pi
 	return pi_endTick - pi_startTick;
 }
 
+JNIEXPORT jint JNICALL Java_TI_PiGpio_pulseIn  (JNIEnv * env, jclass cl, jint pin, jboolean waitFor, jint timeout)
+{
+    uint32_t startTick, endTick, timeoutTick;
+    if(gpioRead(pin) == waitFor)
+	return -2;
+    timeoutTick = gpioTick() + timeout;
+
+    while(gpioRead(pin) != waitFor && timeoutTick > gpioTick())
+	;
+    startTick = gpioTick();
+    if(startTick >= timeoutTick)
+	return -1;
+    while(gpioRead(pin) == waitFor && timeoutTick > gpioTick())
+	;
+    endTick = gpioTick();
+
+    if(startTick >= timeoutTick)
+	return 0;
+
+
+    return endTick - startTick;
+}
 
 
 JNIEXPORT jint JNICALL Java_TI_PiGpio_i2cOpen  (JNIEnv* env, jclass jc, jint i2cBus, jint i2cAddr, jint i2cFlags)
