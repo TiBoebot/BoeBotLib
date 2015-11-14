@@ -121,9 +121,9 @@ public class BoeBot
         }
     }
 
-    public static void analogRead(int pin)
+    public static int analogRead(int pin)
     {
-	PiGpio.analogRead(pin);
+	return PiGpio.analogRead(pin);
     }
 
 }
