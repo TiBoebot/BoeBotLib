@@ -120,4 +120,10 @@ public class BoeBot
             PiGpio.delay(0, 1000000 / (frequency*2));
         }
     }
+
+    public static void analogRead(int pin)
+    {
+	PiGpio.analogRead(pin);
+    }
+
 }
