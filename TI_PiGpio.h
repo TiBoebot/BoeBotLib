@@ -375,6 +375,14 @@ JNIEXPORT jint JNICALL Java_TI_PiGpio_serRead
 JNIEXPORT jint JNICALL Java_TI_PiGpio_serDataAvailable
   (JNIEnv *, jclass, jint);
 
+/*
+ * Class:     TI_PiGpio
+ * Method:    analogRead
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_TI_PiGpio_analogRead
+  (JNIEnv *, jclass, jint);
+
 #ifdef __cplusplus
 }
 #endif

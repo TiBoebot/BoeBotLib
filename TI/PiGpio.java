@@ -252,6 +252,6 @@ class PiGpio
     
     
     //todo: callback for SetAlertFunc
-
+    public native static int analogRead(int pin);
 
 }
