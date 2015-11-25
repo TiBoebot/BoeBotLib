@@ -25,7 +25,7 @@ class PiGpio
                 }
                 System.exit(0);
             }
-        }.run();
+        }.start();
         
     }
         
