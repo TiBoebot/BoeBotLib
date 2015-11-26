@@ -1,4 +1,5 @@
 package TI;
+import java.awt.Color;
 
 
 /**
@@ -123,7 +124,27 @@ public class BoeBot
 
     public static int analogRead(int pin)
     {
-	return PiGpio.analogRead(pin);
+		return PiGpio.analogRead(pin);
     }
 
+	public static void rgbShow()
+	{
+		PiGpio.sendTiny((byte)2);
+	}
+	public static void rgbSet(int led, byte r, byte g, byte b)
+	{
+		PiGpio.sendTiny((byte)(0x1 | led << 3));
+		PiGpio.sendTiny(r);
+		PiGpio.sendTiny(g);
+		PiGpio.sendTiny(b);
+	}
+	public static void rgbSet(int led, Color color)
+	{
+		rgbSet(led, (byte)color.getRed(), (byte)color.getGreen(), (byte)color.getBlue());
+	}
+
+	public static void setStatusLed(boolean enabled)
+	{
+		PiGpio.sendTiny(enabled ? (byte)4 : (byte)5);
+	}
 }

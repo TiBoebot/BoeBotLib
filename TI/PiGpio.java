@@ -7,6 +7,8 @@ class PiGpio
     {
         System.loadLibrary("piGpio");
         initialize();
+
+		tinyHandle = i2cOpen(1, 0x26, 0);
         
         new Thread()
         {
@@ -28,6 +30,8 @@ class PiGpio
         }.start();
         
     }
+
+	static private int tinyHandle;
         
     static int PI_MIN_GPIO = 0; 
     static int PI_MAX_GPIO = 53; 
@@ -253,5 +257,11 @@ class PiGpio
     
     //todo: callback for SetAlertFunc
     public native static int analogRead(int pin);
+
+	public static void sendTiny(byte b)
+	{
+		i2cWriteByte(tinyHandle, b);
+	}
+
 
 }
