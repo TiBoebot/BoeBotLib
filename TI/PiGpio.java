@@ -19,6 +19,7 @@ class PiGpio
                     ServerSocket serverSocket = new ServerSocket(9999);
                     Socket s = serverSocket.accept();
                     System.out.println("Got request to quit, cleaning up");
+					i2cClose(tinyHandle);
                     terminate();
                 }
                 catch(Exception e)
@@ -258,7 +259,7 @@ class PiGpio
     //todo: callback for SetAlertFunc
     public native static int analogRead(int pin);
 
-	public static void sendTiny(byte b)
+	public static void sendTiny(int b)
 	{
 		i2cWriteByte(tinyHandle, b);
 	}

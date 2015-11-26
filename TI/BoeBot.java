@@ -129,22 +129,22 @@ public class BoeBot
 
 	public static void rgbShow()
 	{
-		PiGpio.sendTiny((byte)2);
+		PiGpio.sendTiny(2);
 	}
-	public static void rgbSet(int led, byte r, byte g, byte b)
+	public static void rgbSet(int led, int r, int g, int b)
 	{
-		PiGpio.sendTiny((byte)(0x1 | led << 3));
+		PiGpio.sendTiny(0x1 | led << 3);
 		PiGpio.sendTiny(r);
 		PiGpio.sendTiny(g);
 		PiGpio.sendTiny(b);
 	}
 	public static void rgbSet(int led, Color color)
 	{
-		rgbSet(led, (byte)color.getRed(), (byte)color.getGreen(), (byte)color.getBlue());
+		rgbSet(led, color.getRed(), color.getGreen(), color.getBlue());
 	}
 
 	public static void setStatusLed(boolean enabled)
 	{
-		PiGpio.sendTiny(enabled ? (byte)4 : (byte)5);
+		PiGpio.sendTiny(enabled ? 4 : 5);
 	}
 }
