@@ -1,6 +1,6 @@
 package TI;
 
-class SerialConnection
+public class SerialConnection
 {
     int handle;
     /**
