@@ -132,7 +132,7 @@ public class BoeBot
     {
         if(frequency < 0 || time < 0)
             return;
-        PiGpio.freqOut(pin, frequency, time);
+        PiGpio.freqOut(pinMap[pin], frequency, time);
     }
 
     /**

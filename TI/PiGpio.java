@@ -255,7 +255,7 @@ class PiGpio
     public native static int serRead(int handle, byte[] buf);
     public native static int serDataAvailable(int handle);
     
-    public native static int freqOut(int pin, float freq, int len);
+    public native static void freqOut(int pin, float freq, int len);
     
     //todo: callback for SetAlertFunc
     public native static int analogRead(int pin);

@@ -377,6 +377,14 @@ JNIEXPORT jint JNICALL Java_TI_PiGpio_serDataAvailable
 
 /*
  * Class:     TI_PiGpio
+ * Method:    freqOut
+ * Signature: (IFI)V
+ */
+JNIEXPORT void JNICALL Java_TI_PiGpio_freqOut
+  (JNIEnv *, jclass, jint, jfloat, jint);
+
+/*
+ * Class:     TI_PiGpio
  * Method:    analogRead
  * Signature: (I)I
  */

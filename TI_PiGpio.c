@@ -522,3 +522,21 @@ JNIEXPORT jint JNICALL Java_TI_PiGpio_analogRead  (JNIEnv * env, jclass jc, jint
     i2cClose(spiHandle);
     return data;
 }
+
+
+JNIEXPORT void JNICALL Java_TI_PiGpio_freqOut (JNIEnv * env, jclass jc, jint pin, jfloat frequency, jint time)
+{
+       if(frequency < 0 || time < 0)
+            return;
+
+        unsigned long endTime = gpioTick() + time;
+        int value = 1;
+		int delay = 1000000 / (frequency*2);
+        while(endTime > gpioTick())
+        {
+            gpioWrite(pin, value);
+            value = 1-value;
+            gpioDelay(delay);
+        }
+
+}
