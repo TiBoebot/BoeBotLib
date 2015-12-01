@@ -73,7 +73,7 @@ public class BoeBot
     * Waits for a pulse on a pin
     * @param pin the BoeBot pin number
     * @param value the state to wait for. true to wait for a high pulse, false to wait for a low pulse
-    * @param timeout the timeout to wait for, in milliseconds
+    * @param timeout the timeout to wait for, in microseconds
     * @return Returns the length of the measured pulse, -1 if there was a timeout, and 0 if there was a timeout during the pulse
     */
     public static int pulseIn(int pin, boolean value, int timeout)
@@ -122,15 +122,31 @@ public class BoeBot
         }
     }
 
+    /**
+     * Reads an analog value from the 12bit ADC. This method uses single-shot mode, and opens the SPI bus every time it is called.
+     * @param pin the ADC pin
+     * @return the value returned from the ADC (0-4096)
+     */
     public static int analogRead(int pin)
     {
 		return PiGpio.analogRead(pin);
     }
 
+    /**
+     * Shows the colors set to the NeoPixels on the board
+     */
 	public static void rgbShow()
 	{
 		PiGpio.sendTiny(2);
 	}
+	
+	/**
+	 * Sets the colors of a NeoPixel, but does not show this color. After calling this method for the LEDs you want to change color, call the BoeBot.show() method
+	 * @param led the LED you want to change (0-5)
+	 * @param r the value for red (0-255), 0 is off, 255 is completely on
+	 * @param g the value for green (0-255), 0 is off, 255 is completely on
+	 * @param b the value for blue (0-255), 0 is off, 255 is completely on
+	 */
 	public static void rgbSet(int led, int r, int g, int b)
 	{
 		PiGpio.sendTiny(0x1 | led << 3);
@@ -138,11 +154,21 @@ public class BoeBot
 		PiGpio.sendTiny(g);
 		PiGpio.sendTiny(b);
 	}
+
+	/**
+	 * Sets the colors of a NeoPixel, but does not show this color. After calling this method for the LEDs you want to change color, call the BoeBot.show() method
+	 * @param led the LED you want to change (0-5)
+	 * @param color the color of the LED
+	 */
 	public static void rgbSet(int led, Color color)
 	{
 		rgbSet(led, color.getRed(), color.getGreen(), color.getBlue());
 	}
 
+	/**
+	 * Turns the tiny status LED on or off
+	 * @param enabled true to turn the LED on, false to turn the LED off
+	 */
 	public static void setStatusLed(boolean enabled)
 	{
 		PiGpio.sendTiny(enabled ? 4 : 5);
