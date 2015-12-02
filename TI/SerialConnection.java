@@ -1,16 +1,48 @@
 package TI;
 
-// weet nog niet helemaal hoe ik deze wil gaan maken
 class SerialConnection
 {
-    public SerialConnection(int pinRead, int pinWrite, int boudrate)
+    int handle;
+    /**
+     * Opens a connection to the serial port
+     * @param baudrate the baudrate
+     */
+    public SerialConnection(int baudrate)
     {
+        handle = PiGpio.serOpen("/dev/ttyAMA0", baudrate, 0);
     }
-    public char get()
+    /**
+     * Opens a connection to the serial port at the default 115200 baud
+     */
+    public SerialConnection()
     {
-        return 0;
+        this(115200);
     }
-    public void put()
+    
+    /**
+     * Reads and returns a byte if available
+     * @return the byte read
+     */
+    public int readByte()
     {
+        return PiGpio.serReadByte(handle);
+    }
+    
+    /**
+     * Writes a byte to the serial buffer
+     * @param data the data to write
+     */
+    public void writeByte(int data)
+    {
+        PiGpio.serWriteByte(handle, data);
+    }
+    
+    /**
+     * Checks if there is data available
+     * @return the amount of bytes in the buffer.
+     */
+    public int available()
+    {
+        return PiGpio.serDataAvailable(handle);
     }
 }

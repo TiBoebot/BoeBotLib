@@ -121,6 +121,19 @@ public class BoeBot
             PiGpio.delay(0, 1000000 / (frequency*2));
         }
     }
+    
+    /**
+     * Better version of writing a frequency to a pin, for a certain amount of time
+     * @param pin the BoeBot pin number
+     * @param frequency the frequency to write, in Hz
+     * @param time the amount of time to write, in milliseconds
+     */
+    public static void freqOut(int pin, float frequency, int time)
+    {
+        if(frequency < 0 || time < 0)
+            return;
+        PiGpio.freqOut(pin, frequency, time);
+    }
 
     /**
      * Reads an analog value from the 12bit ADC. This method uses single-shot mode, and opens the SPI bus every time it is called.
